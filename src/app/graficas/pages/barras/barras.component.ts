@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ChartConfiguration, ChartData, ChartType } from 'chart.js';
+import { ChartConfiguration, ChartData, ChartDataSets, ChartType } from 'chart.js';
 
 @Component({
   selector: 'app-barras',
@@ -20,23 +20,23 @@ export class BarrasComponent {
       legend: {
         display: true,
       },
-    },
+    },  
   };
+  public barChartLabels = ['2006', '2007', '2008', '2009', '2010', '2011', '2012']
   public barChartType: ChartType = 'bar';
+  public barChatLegend = true;
 
-  public barChartData: ChartData<'bar'> = {
-    labels: ['2006', '2007', '2008', '2009', '2010', '2011', '2012'],
-    datasets: [
+  public barChartData: ChartDataSets[] = 
+    [
       { data: [65, 59, 80, 81, 56, 55, 40], label: 'Series A' },
       { data: [28, 48, 40, 19, 86, 27, 90], label: 'Series B' },
-    ],
-  };
+    ];
 
  
 
   public randomize(): void {
     // Only Change 3 values
-    this.barChartData.datasets[0].data = [
+    this.barChartData[0].data = [
       Math.round(Math.random() * 100),
       59,
       80,
